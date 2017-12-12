@@ -1,4 +1,4 @@
-let lxxSet = function() {
+let LxxSet = function() {
   let items = {}
 
   // 向集合添加一个新的项
@@ -50,7 +50,7 @@ let lxxSet = function() {
 
   this.union = function(otherSet) {
     // 创建一个新集合（并集：存在A，或者存在B）
-    let unionSet = new lxxSet()
+    let unionSet = new LxxSet()
     let values = this.values()
     for (let i = 0; i < values.length; i++) {
       unionSet.add(values[i])
@@ -64,7 +64,7 @@ let lxxSet = function() {
 
   this.intersection = function(otherSet) {
     // 创建一个新集合（交集：存在A，并且存在B）
-    let intersectionSet = new lxxSet()
+    let intersectionSet = new LxxSet()
     let values = this.values()
 
     for (let i = 0; i < values.length; i++) {
@@ -78,7 +78,7 @@ let lxxSet = function() {
 
   this.difference = function(otherSet) {
     // 创建一个新集合（差集：存在A，并且不存在B）
-    let differenceSet = new lxxSet()
+    let differenceSet = new LxxSet()
     let values = this.values()
 
     for (let i = 0; i < values.length; i++) {
