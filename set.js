@@ -1,4 +1,4 @@
-let Set = function() {
+let lxxSet = function() {
   let items = {}
 
   // 向集合添加一个新的项
@@ -46,5 +46,64 @@ let Set = function() {
       values.push(items[keys[i]])
     }
     return values
+  }
+
+  this.union = function(otherSet) {
+    // 创建一个新集合（并集：存在A，或者存在B）
+    let unionSet = new lxxSet()
+    let values = this.values()
+    for (let i = 0; i < values.length; i++) {
+      unionSet.add(values[i])
+    }
+    values = otherSet.values()
+    for (let i = 0; i < values.length; i++) {
+      unionSet.add(values[i])
+    }
+    return unionSet
+  }
+
+  this.intersection = function(otherSet) {
+    // 创建一个新集合（交集：存在A，并且存在B）
+    let intersectionSet = new lxxSet()
+    let values = this.values()
+
+    for (let i = 0; i < values.length; i++) {
+      if (otherSet.has(values[i])) {
+        intersectionSet.add(values[i])
+      }
+    }
+
+    return intersectionSet
+  }
+
+  this.difference = function(otherSet) {
+    // 创建一个新集合（差集：存在A，并且不存在B）
+    let differenceSet = new lxxSet()
+    let values = this.values()
+
+    for (let i = 0; i < values.length; i++) {
+      if (!otherSet.has(values[i])) {
+        differenceSet.add(values[i])
+      }
+    }
+
+    return differenceSet
+  }
+
+  this.subset = function(otherSet) {
+    // 判断是否子集（子集：集合A是集合B的子集：集合A中的每一个元素都要在B中）
+    if (this.size() > otherSet.size()) {
+      return false
+    } else {
+      let values = this.values()
+
+      for (let i = 0; i < values.length; i++) {
+        if (!otherSet.has(values[i])) {
+          return false
+        }
+      }
+
+      return true
+    }
   }
 }
