@@ -1,12 +1,4 @@
 import { Linkedlist } from './linkedlist'
-let djb2HashCode = function(key) {
-  var hash = 5381 //{1}
-  for (var i = 0; i < key.length; i++) {
-    //{2}
-    hash = hash * 33 + key.charCodeAt(i) //{3}
-  }
-  return hash % 1013 //{4}
-}
 
 export const HashTable = function() {
   let table = []
@@ -120,4 +112,14 @@ export const HashTable1 = function() {
     if (!table[position]) return undefined
     return table[position]
   }
+}
+
+// 创建更好的散列函数 (替代上面loseloseHashCode,减少冲突)
+let djb2HashCode = function(key) {
+  var hash = 5381 //{1}
+  for (var i = 0; i < key.length; i++) {
+    //{2}
+    hash = hash * 33 + key.charCodeAt(i) //{3}
+  }
+  return hash % 1013 //{4}
 }
