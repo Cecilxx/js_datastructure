@@ -1,4 +1,4 @@
-let linkedlist = function() {
+export const Linkedlist = function() {
   // Node: 加入链表的项
   let Node = function(element) {
     this.element = element
@@ -73,12 +73,16 @@ let linkedlist = function() {
   this.toString = function() {
     let current = head
     let string = ''
+
+    if (length === 0) return string
+
     while (current.next) {
-      string += current.element + (current.next ? 'n' : '')
-      current = current.next
+      // true, true, false
+      string += current.element + (current.next ? '\n' : '') // Jonathan, Jamie
+      current = current.next // Jamie, Sue
     }
 
-    return string
+    return string + current.element
   }
   // indexOf: 返回元素在列表中的索引，没有则返回-1
   this.indexOf = function(element) {
@@ -107,5 +111,9 @@ let linkedlist = function() {
   // size: 链表包含的元素个数
   this.size = function() {
     return length
+  }
+
+  this.getHead = function() {
+    return head
   }
 }
