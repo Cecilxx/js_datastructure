@@ -1,4 +1,4 @@
-let LxxSet = function() {
+export const LxxSet = function() {
   let items = {}
 
   // 向集合添加一个新的项

@@ -1,4 +1,4 @@
-let Stack1 = function() {
+export const Stack1 = function() {
   let items = []
 
   this.push = function(element) {
@@ -24,7 +24,7 @@ let Stack1 = function() {
   }
 }
 
-let Stack2 = (function() {
+export const Stack2 = (function() {
   const items = new WeakMap()
   class Stack {
     constructor() {

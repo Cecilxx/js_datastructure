@@ -1,4 +1,4 @@
-let Dictionary = function() {
+export const Dictionary = function() {
   let items = {}
 
   // 添加

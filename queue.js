@@ -1,4 +1,4 @@
-let Queue1 = function() {
+export const Queue1 = function() {
   this.enqueue = function(element) {
     items.push(element)
   }
@@ -22,7 +22,7 @@ let Queue1 = function() {
   }
 }
 
-let Queue2 = (function() {
+export const Queue2 = (function() {
   const items = new WeakMap()
   class Queue {
     constructor() {
