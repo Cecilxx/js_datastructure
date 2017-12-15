@@ -58,7 +58,7 @@ export const HashTable1 = function() {
   this.put = function(key, value) {
     const position = loseloseHashCode(key)
 
-    if (!table[position]) {
+w    if (!table[position]) {
       table[position] = new Linkedlist()
     }
     table[position].append(new ValuePair(key, value))
