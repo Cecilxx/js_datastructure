@@ -49,10 +49,10 @@ class ArrayList {
       index = ArrayList.partition(array, left, right)
 
       if (left < index - 1) {
-        ArrayList.partition(array, left, index - 1)
+        ArrayList.quick(array, left, index - 1)
       }
       if (index < right) {
-        ArrayList.partition(array, index, right)
+        ArrayList.quick(array, index, right)
       }
     }
   }
