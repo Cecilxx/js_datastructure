@@ -42,6 +42,43 @@ class ArrayList {
 
     return result
   }
+
+  static quick(array, left, right) {
+    let index
+    if (array.length > 1) {
+      index = ArrayList.partition(array, left, right)
+
+      if (left < index - 1) {
+        ArrayList.partition(array, left, index - 1)
+      }
+      if (index < right) {
+        ArrayList.partition(array, index, right)
+      }
+    }
+  }
+
+  static partition(array, left, right) {
+    // 划分过程
+    let pivot = array[Math.floor((right + left) / 2)]
+    let i = left
+    let j = right
+
+    while (i <= j) {
+      while (array[i] < pivot) {
+        i++
+      }
+      while (array[j] > pivot) {
+        j--
+      }
+      if (i <= j) {
+        ArrayList.swap(array, i, j)
+        i++
+        j--
+      }
+    }
+    return i
+  }
+
   insert(item) {
     this.array.push(item)
   }
@@ -109,10 +146,18 @@ class ArrayList {
   }
 
   mergeSort() {
+    // 归并排序：时间复杂度O(nlogn)
     let start = +new Date()
     this.array = ArrayList.mergeSortRec(this.array)
     let end = +new Date()
     console.log('mergeSort:' + (end - start) + 'ms')
+  }
+  quickSort() {
+    // 快速排序：时间复杂度O(nlogn)，但性能比其他复杂度O(nlogn)方法好
+    let start = +new Date()
+    ArrayList.quick(this.array, 0, this.array.length - 1)
+    let end = +new Date()
+    console.log('quickSort:' + (end - start) + 'ms')
   }
 }
 
