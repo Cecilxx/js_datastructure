@@ -152,12 +152,36 @@ class ArrayList {
     let end = +new Date()
     console.log('mergeSort:' + (end - start) + 'ms')
   }
+
   quickSort() {
     // 快速排序：时间复杂度O(nlogn)，但性能比其他复杂度O(nlogn)方法好
     let start = +new Date()
     ArrayList.quick(this.array, 0, this.array.length - 1)
     let end = +new Date()
     console.log('quickSort:' + (end - start) + 'ms')
+  }
+
+  binarySearch(item) {
+    this.quickSort()
+
+    let element
+    let mid
+    let low = 0
+    let hight = this.array.length
+
+    while (low <= hight) {
+      mid = Math.floor((low + hight) / 2)
+      element = this.array[mid]
+
+      if (element < item) {
+        low = mid + 1
+      } else if (element > item) {
+        hight = mid - 1
+      } else {
+        return mid
+      }
+    }
+    return -1
   }
 }
 
